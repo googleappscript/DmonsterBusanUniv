@@ -1,150 +1,173 @@
-import React,{useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet, ImageBackground, Linking} from 'react-native';
-import {GetConfig, ButtonColor, ButtonTextColor} from './Functions.js';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, Image, StyleSheet, ImageBackground, Linking } from 'react-native';
+import { GetConfig, ButtonColor, ButtonTextColor } from './Functions.js';
+import food from '../../Img/icon3.png';
+import notice from '../../Img/icon2.png';
+import alamCheck from '../../Img/icon6.png';
+import rule from '../../Img/icon4.png';
+import qna from '../../Img/icon5.png';
+import logo from '../../Img/main_logo.png';
+import mainBg from '../../Img/main_bg.png';
 
-export default function main ({navigation}) {
+export default function main({ navigation }) {
 
 
   const [language, setLanguage] = useState('Ko');
   return (
-    <View style = {Styles.container}>
-      <ImageBackground
-        source = {require('../../Img/main_bg.png')}
-        style = {{width : '100%', height : '100%' }}
-      >
-      <View style = {Styles.header}>
-        <TouchableOpacity
-          style = {[Styles.language_Button, {backgroundColor : ButtonColor("Ko",language)}]}
-          onPress = {() => setLanguage('Ko')}
-        >
-          <Text style = {{color : ButtonTextColor("Ko",language)}}>한국어</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style = {[Styles.language_Button, {backgroundColor : ButtonColor("En",language)}]}
-          onPress = {() => setLanguage('En')}
-          >
-          <Text style = {{color : ButtonTextColor("En",language)}}>ENG</Text>
-        </TouchableOpacity>
-      </View>
-      <View  style = {Styles.title}>
-        <Image
-          source = {require('../../Img/main_logo.png')}
-          style = {{resizeMode : "contain" , width : '75%'}}
-        />
-      </View>
-      <View style = {Styles.section}>
-        <TouchableOpacity
-          style = {Styles.nav_Button1}
-          onPress = {() => navigation.navigate("Notification", { language : language})}
-        >
-          <Image
-            source = {require('../../Img/icon1.png')}
-            style = {{resizeMode : 'contain', height : 70}}
-          />
-          <Text> {GetConfig(language,"main_title1")}</Text>
-        </TouchableOpacity>
+    <View style={{ flex: 1 }}>
+      <ImageBackground source={mainBg} style={{ height: "100%", width: "100%" }}>
+        <View style={{ height: "5%" }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+            <TouchableOpacity style={{
+              borderWidth: 1,
+              borderColor: "white",
+              borderRadius: 10,
+              width: 55,
+              height: 30,
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: 2, backgroundColor: ButtonColor("Ko", language)
+            }}
+            onPress={() => setLanguage('Ko')}
+            >
+              <Text style={{ color: ButtonTextColor("Ko", language) }}>한국어</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{
+              borderWidth: 1,
+              borderColor: "white",
+              borderRadius: 10,
+              width: 55,
+              height: 30,
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: 2, backgroundColor: ButtonColor("En", language)
+            }}
+            onPress={() => setLanguage('En')}
+            >
+            <Text style={{ color: ButtonTextColor("En", language) }}>ENG</Text>
+            </TouchableOpacity>
+          </View>
+
+        </View>
+        <View style={{
+          height: "15%",
+          width: "100%",
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <Image source={logo} style={{ resizeMode: 'contain', width: "75%" }} />
 
 
-        <TouchableOpacity
-          style = {Styles.nav_Button1}
-          onPress = {() => navigation.navigate('Menu', { language : language})}
-        >
-          <Image
-            source = {require('../../Img/icon3.png')}
-            style = {{resizeMode : 'contain', height : 70}}
-          />
-          <Text> {GetConfig(language,"main_title2")}</Text>
-        </TouchableOpacity>
-      </View>
+        </View>
 
-      <View style = {Styles.section}>
-        <TouchableOpacity
-          style = {Styles.nav_Button2}
-          onPress = {() => navigation.navigate('Notice', { language : language})}
-        >
-          <Image
-            source = {require('../../Img/icon2.png')}
-            style = {{resizeMode : 'contain', height : 70}}
-          />
-          <Text> {GetConfig(language,"main_title3")}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style = {Styles.nav_Button2}
-          onPress = {() => Linking.openURL('https://dorm.pusan.ac.kr/dorm/bbs/list05/20000401')}
-        >
-          <Image
-            source = {require('../../Img/icon4.png')}
-            style = {{resizeMode : 'contain', height : 70}}
-          />
-          <Text> {GetConfig(language,"main_title4")}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style = {Styles.nav_Button2}
-          onPress = {() => navigation.navigate('Inquiries', { language : language} )}
-        >
-          <Image
-            source = {require('../../Img/icon5.png')}
-            style = {{resizeMode : 'contain', height : 70}}
-          />
-          <Text> {GetConfig(language,"main_title5")}</Text>
-        </TouchableOpacity>
-      </View>
+
+        <View style={{
+          height: "35%",
+          flexDirection: 'row',
+          justifyContent: 'center'
+        }}>
+
+            <TouchableOpacity
+             style={{
+              backgroundColor: "white",
+              width: "40%",
+              margin: 5,
+              borderRadius: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+              onPress={() => navigation.navigate("Notification", { language: language })}
+            >
+              <Image
+                source={alamCheck} 
+                style={{ resizeMode: 'contain', height: 70 }}
+              />
+              <Text> {GetConfig(language, "main_title1")}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+             style={{
+              backgroundColor: "white",
+              width: "40%",
+              margin: 5,
+              borderRadius: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+              onPress={() => navigation.navigate("Menu", { language: language })}
+            >
+              <Image
+                source={food} 
+                style={{ resizeMode: 'contain', height: 70 }}
+              />
+              <Text> {GetConfig(language, "main_title2")}</Text>
+            </TouchableOpacity>
+
+        </View>
+
+
+        <View style={{
+          height: "35%",
+          flexDirection: 'row',
+          justifyContent: 'center'
+        }}>
+            <TouchableOpacity
+             style={{
+              backgroundColor: "white",
+              width: "30%",
+              margin: 5,
+              borderRadius: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+              onPress={() => navigation.navigate("Notice", { language: language })}
+            >
+              <Image
+                source={notice} 
+                style={{ resizeMode: 'contain', height: 70 }}
+              />
+              <Text> {GetConfig(language, "main_title3")}</Text>
+            </TouchableOpacity>
+
+
+            <TouchableOpacity
+             style={{
+              backgroundColor: "white",
+              width: "30%",
+              margin: 5,
+              borderRadius: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+            onPress={() => Linking.openURL('https://dorm.pusan.ac.kr/dorm/bbs/list05/20000401')}
+            >
+              <Image
+                source={rule} 
+                style={{ resizeMode: 'contain', height: 70 }}
+              />
+              <Text> {GetConfig(language, "main_title4")}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+             style={{
+              backgroundColor: "white",
+              width: "30%",
+              margin: 5,
+              borderRadius: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+            onPress={() => navigation.navigate("Inquiries", { language: language })}
+            >
+              <Image
+                source={qna} 
+                style={{ resizeMode: 'contain', height: 70 }}
+              />
+              <Text> {GetConfig(language, "main_title5")}</Text>
+            </TouchableOpacity>
+
+        </View>
       </ImageBackground>
     </View>
   )
 }
-
-const Styles = StyleSheet.create({
-  container : {
-    flex : 1,
-
-  },
-  header : {
-    flexDirection : 'row',
-    alignItems : 'flex-end',
-    width : '100%',
-    height : '5%',
-    right : 0,
-    justifyContent : 'flex-end'
-  },
-  language_Button : {
-    borderRadius : 10,
-    borderColor : "white",
-    width : 65 ,
-    height : 30,
-    marginTop : 15,
-    marginRight : 10,
-    borderWidth : 1,
-    alignItems : 'center',
-    justifyContent : 'center',
-
-  },
-  title : {
-    height : '28%',
-    width : '100%',
-    alignItems : 'center',
-    justifyContent : 'center',
-  },
-  section : {
-    flexDirection : 'row',
-    justifyContent : 'center'
-  },
-  nav_Button1 : {
-    width : 186,
-    height : 186,
-    backgroundColor : 'white',
-    margin : 7,
-    borderRadius : 10,
-    alignItems : 'center',
-    justifyContent : 'center'
-  },
-  nav_Button2 : {
-    width : 119,
-    height : 186,
-    backgroundColor : 'white',
-    margin : 7,
-    borderRadius : 10,
-    alignItems : 'center',
-    justifyContent : 'center'
-  },
-})
